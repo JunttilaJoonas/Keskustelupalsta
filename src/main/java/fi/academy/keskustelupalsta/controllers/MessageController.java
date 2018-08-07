@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,11 @@ public class MessageController {
         this.messageRepository = repository;
     }
 
+    @GetMapping
+    public List<Message> getAll(){
+        return messageRepository.findAll();
+    }
+
     @GetMapping("/{id}")
     public Optional<Message> getOne(@PathVariable int id){
         return messageRepository.findById(id);
@@ -29,6 +36,7 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<?> addOne(@RequestBody Message message) {
+        message.setTimestamp(new Timestamp(System.currentTimeMillis()));
         messageRepository.save(message);
         int id = message.getId();
         URI location = UriComponentsBuilder.newInstance()

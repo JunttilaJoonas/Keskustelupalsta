@@ -6,7 +6,7 @@ create table if not exists user (
   lastname varchar(255) not null,
   birthdate date not null,
   password varchar(255) not null,
-  type varchar(255),
+  type varchar(255) default 'user',
   primary key(id)
 );
 
@@ -18,7 +18,7 @@ create table if not exists topic(
   CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id),
   primary key (id)
 );
---
+
 create table if not exists message (
   id integer auto_increment not null,
   timestamp timestamp not null,

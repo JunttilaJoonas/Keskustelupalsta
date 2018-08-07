@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +21,11 @@ public class MessageController {
     @Autowired
     public MessageController(MessageRepository repository) {
         this.messageRepository = repository;
+    }
+
+    @GetMapping
+    public List<Message> getAll(){
+        return messageRepository.findAll();
     }
 
     @GetMapping("/{id}")

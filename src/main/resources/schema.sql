@@ -16,7 +16,7 @@ create table topic(
   head varchar (255) not null,
   userid int not null,
   CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id),
-  primary key(id)
+  primary key (id)
 );
 
 create table message (

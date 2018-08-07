@@ -1,10 +1,14 @@
 package fi.academy.keskustelupalsta.entities;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
+@Entity
 public class Topic {
     @Id @GeneratedValue
     private int id;

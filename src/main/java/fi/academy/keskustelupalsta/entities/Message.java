@@ -1,9 +1,11 @@
 package fi.academy.keskustelupalsta.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
+@Entity
 public class Message {
     @Id @GeneratedValue
     private int id;

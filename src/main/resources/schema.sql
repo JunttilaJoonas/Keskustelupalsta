@@ -10,7 +10,7 @@ create table if not exists user (
   primary key(id)
 );
 
-create tableif not exists topic(
+create table if not exists topic(
   id integer auto_increment not null,
   timestamp timestamp not null,
   head varchar (255) not null,
@@ -19,7 +19,7 @@ create tableif not exists topic(
   primary key (id)
 );
 
-create tableif not exists message (
+create table if not exists message (
   id integer auto_increment not null,
   timestamp timestamp not null,
   text text not null,

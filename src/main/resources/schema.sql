@@ -25,7 +25,7 @@ create table message (
   text text not null,
   userid int not null,
   topicid int not null,
-  primary key (id),
   CONSTRAINT  message_topic_id_fk FOREIGN KEY (topicid) REFERENCES topic (id),
-  CONSTRAINT  message_user_id_fk FOREIGN KEY (userid) REFERENCES user (id)
+  CONSTRAINT  message_user_id_fk FOREIGN KEY (userid) REFERENCES user (id),
+  primary key(id)
 );

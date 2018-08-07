@@ -57,5 +57,9 @@ public class UserController {
         userRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> validationError(Exception ex) {
+        return ResponseEntity.notFound().build();
+    }
 }

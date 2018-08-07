@@ -6,7 +6,7 @@ create table if not exists user (
   lastname varchar(255) not null,
   birthdate date not null,
   password varchar(255) not null,
-  type varchar(255),
+  type varchar(255) default 'user',
   primary key(id)
 );
 

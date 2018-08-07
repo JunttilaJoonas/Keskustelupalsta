@@ -1,9 +1,11 @@
 package fi.academy.keskustelupalsta.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class User {
     @Id @GeneratedValue
     private int id;

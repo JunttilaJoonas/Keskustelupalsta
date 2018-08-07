@@ -1,4 +1,4 @@
-create table user (
+create table if not exists user (
   id integer auto_increment not null,
   username varchar(40) not null,
   email varchar(255) not null,
@@ -10,7 +10,7 @@ create table user (
   primary key(id)
 );
 
-create table topic(
+create table if not exists topic(
   id integer auto_increment not null,
   timestamp timestamp not null,
   head varchar (255) not null,
@@ -18,8 +18,8 @@ create table topic(
   CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id),
   primary key (id)
 );
-
-create table message (
+--
+create table if not exists message (
   id integer auto_increment not null,
   timestamp timestamp not null,
   text text not null,

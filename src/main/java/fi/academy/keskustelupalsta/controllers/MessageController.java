@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<?> addOne(@RequestBody Message message) {
+        message.setTimestamp(new Timestamp(System.currentTimeMillis()));
         messageRepository.save(message);
         int id = message.getId();
         URI location = UriComponentsBuilder.newInstance()

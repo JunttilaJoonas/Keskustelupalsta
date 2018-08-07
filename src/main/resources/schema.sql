@@ -15,7 +15,7 @@ create table topic(
   timestamp timestamp not null,
   head varchar (255) not null,
   userid int not null,
-  CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id)
+  CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id),
   primary key (id)
 );
 
@@ -26,6 +26,6 @@ create table message (
   userid int not null,
   topicid int not null,
   primary key (id),
-  CONSTRAINT  message_topic_id_fk FOREIGN KEY (topicid) REFERENCES topic (id)
+  CONSTRAINT  message_topic_id_fk FOREIGN KEY (topicid) REFERENCES topic (id),
   CONSTRAINT  message_user_id_fk FOREIGN KEY (userid) REFERENCES user (id)
 );

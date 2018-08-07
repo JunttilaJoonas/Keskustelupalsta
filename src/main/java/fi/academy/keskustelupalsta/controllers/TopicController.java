@@ -31,7 +31,7 @@ public class TopicController {
        throw new TopicNotFoundException("Topic not found.");
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Topic> getAll () {
         return topicRepository.findAll();
     }

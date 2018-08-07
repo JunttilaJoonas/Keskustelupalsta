@@ -6,7 +6,7 @@ create table user (
   lastname varchar(255) not null,
   birthdate date not null,
   password varchar(255) not null,
-  type varchar(255) default "user",
+  type varchar(255),
   primary key(id)
 );
 
@@ -15,8 +15,9 @@ create table topic(
   timestamp timestamp not null,
   head varchar (255) not null,
   userid int not null,
-  CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id)
-;)
+  CONSTRAINT  topic_user_id_fk FOREIGN KEY (userid) references user (id),
+  primary key(id)
+);
 
 create table message (
   id integer auto_increment not null,
@@ -24,6 +25,7 @@ create table message (
   text text not null,
   userid int not null,
   topicid int not null,
-  CONSTRAINT  message_topic_id_fk FOREIGN KEY (topicid) REFERENCES topic (id)
-  CONSTRAINT  message_user_id_fk FOREIGN KEY (userid) REFERENCES user (id)
+  CONSTRAINT  message_topic_id_fk FOREIGN KEY (topicid) REFERENCES topic (id),
+  CONSTRAINT  message_user_id_fk FOREIGN KEY (userid) REFERENCES user (id),
+  primary key(id)
 );

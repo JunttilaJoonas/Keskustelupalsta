@@ -1,20 +1,26 @@
 package fi.academy.keskustelupalsta.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 public class Message {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private Timestamp timestamp;
     private String text;
-    private int userid;
-    private int topicid;
+    @ManyToOne @JoinColumn
+    private User userid;
+    @ManyToOne @JoinColumn
+    private Topic topicid;
 
     public Message() {
+    }
+
+    public Message(String text, User userid, Topic topicid) {
+        this.text = text;
+        this.userid = userid;
+        this.topicid = topicid;
     }
 
     public int getId() {
@@ -41,19 +47,19 @@ public class Message {
         this.text = text;
     }
 
-    public int getUserid() {
+    public User getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(User userid) {
         this.userid = userid;
     }
 
-    public int getTopicid() {
+    public Topic getTopicid() {
         return topicid;
     }
 
-    public void setTopicid(int topicid) {
+    public void setTopicid(Topic topicid) {
         this.topicid = topicid;
     }
 }

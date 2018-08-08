@@ -27,15 +27,31 @@ public class KeskustelupalstaApplication {
     public CommandLineRunner init(MessageRepository messageRepository, TopicRepository topicRepository, UserRepository userRepository) {
         return args -> {
             User user = new User("Testikayttaja", "testi@kayttaja.fi");
-            userRepository.save(user);;
+            userRepository.save(user);
 
             List<Topic> topics = new ArrayList<>();
-            topics.add(new Topic("otsikko"));
-            Topic topic = new Topic("otsikkoni", user);
-            topicRepository.save(topic);
+            topics.add(new Topic("otsikko", user));
+            topics.add(new Topic("otsikko2", user));
+            topics.add(new Topic("otsikko3", user));
+            topics.add(new Topic("otsikko4", user));
+            topics.add(new Topic("otsikko5", user));
+            topics.add(new Topic("otsikko6", user));
+            topics.add(new Topic("otsikko7", user));
+            topics.forEach(topicRepository::save);
 
-            Message message = new Message("tämä on viestin sisältö", user, topic);
-            messageRepository.save(message);
+            List<Message> messages = new ArrayList<>();
+            messages.add(new Message("viestin sisältö", user, topics.get(0)));
+            messages.add(new Message("viestin sisältö", user, topics.get(0)));
+            messages.add(new Message("viestin sisältö", user, topics.get(0)));
+            messages.add(new Message("viestin sisältö", user, topics.get(1)));
+            messages.add(new Message("viestin sisältö", user, topics.get(1)));
+            messages.add(new Message("viestin sisältö", user, topics.get(1)));
+            messages.add(new Message("viestin sisältö", user, topics.get(2)));
+            messages.add(new Message("viestin sisältö", user, topics.get(2)));
+            messages.add(new Message("viestin sisältö", user, topics.get(2)));
+            messages.add(new Message("viestin sisältö", user, topics.get(3)));
+            messages.add(new Message("viestin sisältö", user, topics.get(3)));
+            messages.forEach(messageRepository::save);
         };
     }
 }

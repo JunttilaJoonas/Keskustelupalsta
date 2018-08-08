@@ -1,6 +1,7 @@
 package fi.academy.keskustelupalsta.entities;
 
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 
 @Entity

@@ -5,12 +5,14 @@
     <title id="head-title"></title>
     <script src="js/topicmessages.js"></script>
 </head>
-<body onload="fetchMessagesByTopicId()">
+<body onload="fetchMessages()">
     <h1 id="topic-title">Viestiketjun otsikko</h1>
     <table id="messagetable">
-        <th id="user">Lähettäjä</th>
-        <th id="timestamp">Aika</th>
-        <th id="message">Viesti</th>
+        <tr>
+            <th id="message">Viesti</th>
+            <th id="user">Lähettäjä</th>
+            <th id="timestamp">Aika</th>
+        </tr>
     </table>
 </body>
 </html>

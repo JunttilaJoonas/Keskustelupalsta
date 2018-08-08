@@ -1,5 +1,6 @@
 var list = document.getElementById("tulos");
 var table = document.createElement("table");
+
 function getTable() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {

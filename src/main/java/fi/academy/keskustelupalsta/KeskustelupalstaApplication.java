@@ -46,7 +46,6 @@ public class KeskustelupalstaApplication {
                 topicRepository.save(topic);
                 j += 1234;
             }
-
             
             List<Message> messages = new ArrayList<>();
             messages.add(new Message("viestin sisältö", user, topics.get(0)));

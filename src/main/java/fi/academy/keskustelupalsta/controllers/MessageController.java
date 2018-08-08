@@ -24,8 +24,9 @@ public class MessageController {
     private TopicRepository topicRepository;
 
     @Autowired
-    public MessageController(MessageRepository repository) {
-        this.messageRepository = repository;
+    public MessageController(MessageRepository messageRepository, TopicRepository topicRepository) {
+        this.messageRepository = messageRepository;
+        this.topicRepository = topicRepository;
     }
 
     @GetMapping

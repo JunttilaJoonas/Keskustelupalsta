@@ -10,24 +10,54 @@ function getQueryVariable(variable) {
     return(false);
 }
 
-function fetchMessagesByTopicId() {
+function fetchMessages() {
     var id = getQueryVariable("id");
     var url = "http://localhost:8080/messages/topic/" + id;
-    console.log(url);
-
-    var taulukko;
+    console.log("rest-osoite: " + url);
 
     xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                console.log("url=" + url);
-                taulukko = JSON.parse(xhr.responseText);
-                console.dir(taulukko);
+                var messages = JSON.parse(xhr.responseText);
+                console.dir(messages);
+                addMessagesToPage(messages, id);
             }
         }
     };
 
     xhr.open('get', url);
-    xhr.send(taulukko);
+    xhr.send(null);
+}
+
+function addMessagesToPage(messages, topicId) {
+    var pageTitle = document.getElementById("topic-title");
+    var table = document.getElementById("messagetable");
+    var topicName = messages[0].topicid.head;
+    console.log(topicName);
+    pageTitle.innerHTML = topicName;
+
+    for (var i = 0; i < messages.length; i++) {
+        var user = messages[i].userid.username;
+        var timestamp = messages[i].timestamp;
+        var message = messages[i].text;
+
+        var tablerow = document.createElement("tr");
+        var userField = document.createElement("td");
+        var timeField = document.createElement("td");
+        var textField = document.createElement("td");
+
+        userField.appendChild(document.createTextNode(user));
+        timeField.appendChild(document.createTextNode(timestamp));
+        textField.appendChild(document.createTextNode(message));
+
+        tablerow.appendChild(textField);
+        tablerow.appendChild(userField);
+        tablerow.appendChild(timeField);
+        table.appendChild(tablerow);
+    }
+
+
+
+
 }

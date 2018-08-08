@@ -72,5 +72,4 @@ public class MessageController {
         messageRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }

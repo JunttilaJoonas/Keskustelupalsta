@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,15 @@ public class KeskustelupalstaApplication {
             topics.add(new Topic("otsikko5", user));
             topics.add(new Topic("otsikko6", user));
             topics.add(new Topic("otsikko7", user));
-            topics.forEach(topicRepository::save);
+
+            for (int i = 0, j = 1000; i<topics.size(); i++) {
+                long aika = j*1000;
+                Topic topic = topics.get(i);
+                topic.setTimestamp(new Timestamp(aika));
+                topicRepository.save(topic);
+                j += 1000;
+            }
+
             
             List<Message> messages = new ArrayList<>();
             messages.add(new Message("viestin sisältö", user, topics.get(0)));
@@ -51,7 +60,14 @@ public class KeskustelupalstaApplication {
             messages.add(new Message("viestin sisältö", user, topics.get(2)));
             messages.add(new Message("viestin sisältö", user, topics.get(3)));
             messages.add(new Message("viestin sisältö", user, topics.get(3)));
-            messages.forEach(messageRepository::save);
+
+            for (int i = 0, j = 1000; i<messages.size(); i++) {
+                long aika = j*1000;
+                Message message = messages.get(i);
+                message.setTimestamp(new Timestamp(aika));
+                messageRepository.save(message);
+                j += 1000;
+            }
         };
     }
 }

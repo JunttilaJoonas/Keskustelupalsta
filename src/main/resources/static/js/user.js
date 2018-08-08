@@ -6,10 +6,12 @@ var lastname = document.getElementById("lastname");
 var birthdate = document.getElementById("birthdate");
 var form = document.getElementById("submit");
 var url = "http://localhost:8080/users";
+var xhr = new XMLHttpRequest();
 
 // var error;
 
-function addUser() {
+function addUser(event) {
+    event.preventDefault();
     var data = {};
     data.username = username.value;
     data.password = password.value;
@@ -20,17 +22,15 @@ function addUser() {
     var json = JSON.stringify(data);
     console.log(json);
 
-    var xhr = new XMLHttpRequest();
+
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
-        var users = JSON.parse(xhr.responseText);
-        if (xhr.readyState == 4 && xhr.status == "201") {
-            console.table(users);
-        } else {
-            console.error(users);
+        if (xhr.readyState === 4 && xhr.status === 201) {
+            console.log("Uusi käyttäjä luotu.");
+            window.location.href="http://localhost:8080/topics.html";
         }
-    };
+    }
     xhr.send(json);
 }
 

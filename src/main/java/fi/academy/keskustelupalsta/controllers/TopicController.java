@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,7 @@ public class TopicController {
 
     @PostMapping
     public ResponseEntity<?> createNew(@RequestBody Topic topic) {
+        topic.setTimestamp(new Timestamp(System.currentTimeMillis()));
         topicRepository.save(topic);
         int id = topic.getId();
         URI location = UriComponentsBuilder.newInstance()

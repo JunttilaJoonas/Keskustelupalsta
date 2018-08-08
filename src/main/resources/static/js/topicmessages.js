@@ -65,8 +65,10 @@ function addMessagesToPage(messages, topicId) {
 
 function postNewMessage() {
     var url = "http://localhost:8080/messages";
+    var textField = document.getElementById("new-message-text");
     var data = {};
-    data.text = document.getElementById("new-message-text").value;
+    data.text = textField.value;
+    textField.value = "";
     data.topicid = parseInt(getQueryVariable("id"));
     data.userid = 1;
     var json = JSON.stringify(data);

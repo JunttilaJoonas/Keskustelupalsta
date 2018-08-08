@@ -33,6 +33,11 @@ function fetchMessages() {
 function addMessagesToPage(messages, topicId) {
     var pageTitle = document.getElementById("topic-title");
     var table = document.getElementById("messagetable");
+
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
     var topicName = messages[0].topicid.head;
     console.log(topicName);
     pageTitle.innerHTML = topicName;
@@ -62,7 +67,7 @@ function postNewMessage() {
     var url = "http://localhost:8080/messages";
     var data = {};
     data.text = document.getElementById("new-message-text").value;
-    data.topicid = getQueryVariable("id");
+    data.topicid = parseInt(getQueryVariable("id"));
     data.userid = 1;
     var json = JSON.stringify(data);
     console.log(json);
@@ -70,14 +75,11 @@ function postNewMessage() {
     xhr.open('post', url);
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function () {
-        var users = JSON.parse(xhr.responseText);
-        if (xhr.readyState === 4 && xhr.status === "201") {
-            console.table(users);
-        } else {
-            console.error(users);
+        if (xhr.readyState === 4 && xhr.status === 201) {
+            console.log("Postattu");
+            fetchMessages();
         }
     }
 
     xhr.send(json);
-    // location.reload();
 }

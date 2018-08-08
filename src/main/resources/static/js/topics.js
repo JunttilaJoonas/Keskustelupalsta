@@ -1,5 +1,5 @@
-var list = document.getElementById("tulos");
-var table = document.createElement("table");
+// var list = document.getElementsByTagName("div");
+// var table = document.createElement("table");
 function getTable() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -16,7 +16,8 @@ function getTable() {
 }
 
 function getTopics(result) {
-    // var table = document.createElement("table");
+    var list = document.getElementById("tulos");
+    var table = document.createElement("table");
     var tBody = document.createElement("tbody");
     var tHead = document.createElement("thead");
     var headRow = document.createElement("tr");
@@ -44,10 +45,9 @@ function getTopics(result) {
         var topicHead = document.createElement("td");
         var head = topic.head;
         var link = document.createElement("a");
-        link.setAttribute("href", "http://localhost:8080/topics/" + topic.id);
-        link.setAttribute("name", head);
+        link.setAttribute("href", "http://localhost:8080/topicmessages.html?id=" + topic.id);
+        link.innerHTML = head;
         topicHead.appendChild(link);
-        // topicHead.appendChild(document.createTextNode(topic.head));
         var topicTimestamp = document.createElement("td");
         topicTimestamp.appendChild(document.createTextNode(topic.timestamp));
         var topicUser = document.createElement("td");
@@ -56,9 +56,6 @@ function getTopics(result) {
         topicRow.appendChild(topicTimestamp);
         topicRow.appendChild(topicUser);
         tBody.appendChild(topicRow);
-        // tBody.appendChild(topicRow);
-        // console.log(table);
-        // list.appendChild(table);
     }
     console.log(tBody);
     table.appendChild(tBody);

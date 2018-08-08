@@ -33,6 +33,11 @@ function fetchMessages() {
 function addMessagesToPage(messages, topicId) {
     var pageTitle = document.getElementById("topic-title");
     var table = document.getElementById("messagetable");
+
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
     var topicName = messages[0].topicid.head;
     console.log(topicName);
     pageTitle.innerHTML = topicName;
@@ -56,8 +61,25 @@ function addMessagesToPage(messages, topicId) {
         tablerow.appendChild(timeField);
         table.appendChild(tablerow);
     }
+}
 
+function postNewMessage() {
+    var url = "http://localhost:8080/messages";
+    var data = {};
+    data.text = document.getElementById("new-message-text").value;
+    data.topicid = parseInt(getQueryVariable("id"));
+    data.userid = 1;
+    var json = JSON.stringify(data);
+    console.log(json);
 
+    xhr.open('post', url);
+    xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+    xhr.onload = function () {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+            console.log("Postattu");
+            fetchMessages();
+        }
+    }
 
-
+    xhr.send(json);
 }

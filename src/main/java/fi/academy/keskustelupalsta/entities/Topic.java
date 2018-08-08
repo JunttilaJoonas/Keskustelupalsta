@@ -16,6 +16,10 @@ public class Topic {
     public Topic() {
     }
 
+    public Topic (int id) {
+        this.id = id;
+    }
+
     public Topic(String head, User userid) {
         this.head = head;
         this.userid = userid;
@@ -27,6 +31,10 @@ public class Topic {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public Timestamp getTimestamp() {

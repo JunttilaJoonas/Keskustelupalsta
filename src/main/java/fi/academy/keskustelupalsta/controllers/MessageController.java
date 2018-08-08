@@ -1,8 +1,11 @@
 package fi.academy.keskustelupalsta.controllers;
 
 import fi.academy.keskustelupalsta.entities.Message;
+import fi.academy.keskustelupalsta.entities.Topic;
 import fi.academy.keskustelupalsta.exceptions.MessageNotFoundException;
+import fi.academy.keskustelupalsta.exceptions.TopicNotFoundException;
 import fi.academy.keskustelupalsta.repositories.MessageRepository;
+import fi.academy.keskustelupalsta.repositories.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import java.util.Optional;
 @RequestMapping("/messages")
 public class MessageController {
     private MessageRepository messageRepository;
+    private TopicRepository topicRepository;
 
     @Autowired
     public MessageController(MessageRepository repository) {
@@ -32,6 +36,12 @@ public class MessageController {
     @GetMapping("/{id}")
     public Optional<Message> getOne(@PathVariable int id){
         return messageRepository.findById(id);
+    }
+
+    @GetMapping("/topic/{id}")
+    public List<Message> getAllByTopicId(@PathVariable int id) {
+        Topic topic = topicRepository.findById(id).orElseThrow(() -> new TopicNotFoundException("topic not found"));
+        return messageRepository.findAllByTopicidOrderByTimestamp(topic);
     }
 
     @PostMapping

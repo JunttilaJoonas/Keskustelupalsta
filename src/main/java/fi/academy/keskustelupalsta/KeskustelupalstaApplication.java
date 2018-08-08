@@ -40,11 +40,11 @@ public class KeskustelupalstaApplication {
             topics.add(new Topic("otsikko7", user));
 
             for (int i = 0, j = 1000; i<topics.size(); i++) {
-                long aika = j*1000;
+                long aika = j*12345;
                 Topic topic = topics.get(i);
                 topic.setTimestamp(new Timestamp(aika));
                 topicRepository.save(topic);
-                j += 1000;
+                j += 1234;
             }
 
             
@@ -62,11 +62,11 @@ public class KeskustelupalstaApplication {
             messages.add(new Message("viestin sisältö", user, topics.get(3)));
 
             for (int i = 0, j = 1000; i<messages.size(); i++) {
-                long aika = j*1000;
+                long aika = j*12345;
                 Message message = messages.get(i);
                 message.setTimestamp(new Timestamp(aika));
                 messageRepository.save(message);
-                j += 1000;
+                j += 1234;
             }
         };
     }

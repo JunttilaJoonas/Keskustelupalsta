@@ -9,7 +9,8 @@ public class Topic {
     private int id;
     private Timestamp timestamp;
     private String head;
-    @ManyToOne @JoinColumn
+    @ManyToOne
+    @JoinColumn
     private User userid;
 
     public Topic() {

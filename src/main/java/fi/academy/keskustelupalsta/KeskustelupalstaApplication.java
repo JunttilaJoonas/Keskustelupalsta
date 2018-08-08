@@ -38,7 +38,7 @@ public class KeskustelupalstaApplication {
             topics.add(new Topic("otsikko6", user));
             topics.add(new Topic("otsikko7", user));
             topics.forEach(topicRepository::save);
-
+            
             List<Message> messages = new ArrayList<>();
             messages.add(new Message("viestin sisältö", user, topics.get(0)));
             messages.add(new Message("viestin sisältö", user, topics.get(0)));

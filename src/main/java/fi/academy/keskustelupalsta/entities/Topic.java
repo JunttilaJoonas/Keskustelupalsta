@@ -1,9 +1,6 @@
 package fi.academy.keskustelupalsta.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,9 +9,15 @@ public class Topic {
     private int id;
     private Timestamp timestamp;
     private String head;
-    private int userid;
+    @ManyToOne @JoinColumn
+    private User userid;
 
     public Topic() {
+    }
+
+    public Topic(String head, User userid) {
+        this.head = head;
+        this.userid = userid;
     }
 
     public int getId() {
@@ -41,11 +44,11 @@ public class Topic {
         this.head = head;
     }
 
-    public int getUserid() {
+    public User getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(User userid) {
         this.userid = userid;
     }
 }

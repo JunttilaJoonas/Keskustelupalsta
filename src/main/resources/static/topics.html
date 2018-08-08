@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/topics.js"></script>
+    <script src="js/newtopicform.js"></script>
     <script src="js/features.js"></script>
 </head>
 <body onload="getTable()">
@@ -11,6 +12,13 @@
 <div id="tulos"></div>
 
 <div id="welcome"></div>
+<div class="hide">
+    <form onsubmit="addNewTopic(event)">
+        Luo uusi keskustelu: <br/>
+        <input id="head" type="text" placeholder="Keskustelun otsikko" required><br/>
+        <input class="loginbutton" type="submit" value="Lähetä">
+    </form>
+</div>
 <!--<script src="./js/topics.js"></script>-->
 </body>
 </html>

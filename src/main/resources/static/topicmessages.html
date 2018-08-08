@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title id="head-title"></title>
+    <script src="js/topicmessages.js"></script>
 </head>
-<body>
-
+<body onload="fetchMessages()">
+    <h1 id="topic-title">Viestiketjun otsikko</h1>
+    <table id="messagetable">
+        <tr>
+            <th id="message">Viesti</th>
+            <th id="user">Lähettäjä</th>
+            <th id="timestamp">Aika</th>
+        </tr>
+    </table>
 </body>
 </html>

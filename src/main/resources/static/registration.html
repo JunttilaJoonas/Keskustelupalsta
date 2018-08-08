@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/forumstyle.css">
+    <link rel="stylesheet" href="./css/forumstyle.css">
+
 </head>
 <body>
 <h1>Tervetuloa keskustelufoorumiimme</h1>
@@ -35,10 +37,12 @@
         <label for="birthdate">Syntymäpäivä: * </label>
         <input type="birthdate" id="birthdate" placeholder="pp.kk.vvvv">
     </div>
-    <input type="button" class="loginbutton" value="Rekisteröidy">
+    <div>
+    <input type="submit" id="submit" class="loginbutton" onclick=addUser() value="Rekisteröidy">
+    </div>
 </form>
 
-<script src="../js/registration.js"></script>
+<script src="js/user.js"></script>
 <footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>
 </html>

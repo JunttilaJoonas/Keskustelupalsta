@@ -3,14 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="./css/forumstyle.css">
 </head>
 <body>
-<div id="login" class="login">
-    <input type="text" id="user" placeholder="Käyttäjätunnus">
-    <input type="password" id="pass" placeholder="Salasana">
-    <input type="button" class="loginbutton" onclick="saveCookies(),login()" value="Kirjaudu sisään">
-    <input type="button" class="loginbutton" onclick="saveCookies(),setNewUserToMap(),writeUserFile()" value="Rekisteröidy">
-</div>
+<h1>Tervetuloa keskustelufoorumiimme</h1>
+<h3>Rekisteröitymällä pääset osallistumaan keskusteluun. Voit avata uusia aiheita
+    tai vastata olemassa oleviin viestiketjuihin.</h3>
+<p>Tähdellä * merkityt kentät ovat pakollisia.</p>
+<fieldset>
+    <div>
+        <label for="username">Käyttäjätunnus: * </label>
+        <input type="username" id="username" placeholder="malli">
+    </div>
+    <div>
+        <label for="password">Salasana: * </label>
+        <input type="password" id="password" placeholder="********">
+    </div>
+    <div>
+        <label for="email">Email: * </label>
+        <input type="email" id="email" placeholder="malli@mallikas.fi">
+    </div>
+    <div>
+        <label for="firstname">Etunimi: * </label>
+        <input type="firstname" id="firstname" placeholder="Malli">
+    </div>
+    <div>
+        <label for="lastname">Sukunimi: * </label>
+        <input type="lastname" id="lastname" placeholder="Mallikas">
+    </div>
+    <div>
+        <label for="birthdate">Syntymäpäivä: * </label>
+        <input type="birthdate" id="birthdate" placeholder="pp.kk.vvvv">
+    </div>
+    <div>
+    <input type="button" id="submit" class="loginbutton" onclick=addUser(event) value="Rekisteröidy">
+    </div>
+</fieldset>
 
+<script src="js/user.js"></script>
+<footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>
 </html>

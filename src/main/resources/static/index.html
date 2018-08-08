@@ -5,13 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<div id="login" class="login">
+<h1>Tervetuloa keskustelufoorumiimme</h1>
+<h3>Rekisteröitymällä pääset osallistumaan keskusteluun. Voit avata uusia aiheita
+    tai vastata olemassa oleviin viestiketjuihin.</h3>
+<div>
     <input type="text" id="user" placeholder="Käyttäjätunnus">
     <input type="password" id="pass" placeholder="Salasana">
-    <input type="button" class="loginbutton" value="Kirjaudu sisään">
-    <input type="button" class="loginbutton" value="Rekisteröidy">
-    <input type="button" class="loginbutton" value="Jatka kirjautumatta">
+    <input type="button" id="login" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
+    <input type="button" id="register" class="loginbutton" onclick="register()" value="Rekisteröidy">
+    <input type="button" id="continue" class="loginbutton" onclick="continueWithoutRegistering()" value="Jatka kirjautumatta">
 </div>
-
+<script src="js/features.js"></script>
+<footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>
 </html>

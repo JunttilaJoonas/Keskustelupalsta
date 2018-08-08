@@ -12,6 +12,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class KeskustelupalstaApplication {
 
@@ -26,6 +29,8 @@ public class KeskustelupalstaApplication {
             User user = new User("Testikayttaja", "testi@kayttaja.fi");
             userRepository.save(user);;
 
+            List<Topic> topics = new ArrayList<>();
+            topics.add(new Topic("otsikko"));
             Topic topic = new Topic("otsikkoni", user);
             topicRepository.save(topic);
 

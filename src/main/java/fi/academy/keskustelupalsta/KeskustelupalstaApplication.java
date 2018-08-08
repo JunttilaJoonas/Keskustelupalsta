@@ -27,9 +27,9 @@ public class KeskustelupalstaApplication {
     public CommandLineRunner init(MessageRepository messageRepository, TopicRepository topicRepository, UserRepository userRepository) {
         return args -> {
             User user = new User("Testikayttaja", "testi@kayttaja.fi");
-            userRepository.save(user);;
-
+            userRepository.save(user);
             List<Topic> topics = new ArrayList<>();
+            
             topics.add(new Topic("otsikko"));
             Topic topic = new Topic("otsikkoni", user);
             topicRepository.save(topic);

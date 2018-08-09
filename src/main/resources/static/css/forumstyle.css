@@ -1,5 +1,5 @@
 body {
-    max-width: 800px;
+    max-width: 600px;
     margin: auto;
     text-align: center;
     font-family: Arial;
@@ -9,12 +9,29 @@ p {
     text-align: left;
 }
 
-#tulos.table {
-    table-layout: fixed;
+#tulos {
     width: 90%;
-    position: relative;
-    align-content: center;
+    position: center;
+    border-collapse: collapse;
     text-align: left;
+}
+
+#tulos td, #tulos th {
+    width: content-box;
+    padding: 5px;
+}
+
+#tulos tr:nth-child(odd) {
+    background-color: #ddd;
+    padding: 5px;
+}
+
+#tulos th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: cornflowerblue;
+    color: white;
 }
 
 .content {
@@ -29,6 +46,10 @@ fieldset {
     text-align: center;
     border-radius: 8px;
     position: relative;
+}
+
+legend {
+    text-align: left;
 }
 
 table {
@@ -84,10 +105,11 @@ footer {
 .loginbutton {
     margin-right: 2px;
     border-radius: 8px;
-    width: 130px;
+    width: 150px;
     height: 22px;
-    color: black;
-    font-size: x-small;
+    background-color: cornflowerblue;
+    color: white;
+    font-size: small;
     font-weight: bolder;
     align-content: center
 }

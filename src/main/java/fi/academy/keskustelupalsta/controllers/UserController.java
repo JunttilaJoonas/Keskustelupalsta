@@ -38,17 +38,17 @@ public class UserController {
     }
     
     @PostMapping
-    public int addOne(@RequestBody User user){
+    public ResponseEntity<?> addOne(@RequestBody User user){
         userRepository.save(user);
         int id = user.getId();
-//        URI location = UriComponentsBuilder.newInstance()
-//                .scheme("http")
-//                .host("localhost")
-//                .port(8080)
-//                .path("/users/{id}")
-//                .buildAndExpand(id)
-//                .toUri();
-        return id;
+        URI location = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("localhost")
+                .port(8080)
+                .path("/users/{id}")
+                .buildAndExpand(id)
+                .toUri();
+        return ResponseEntity<?>
     }
     
     @PutMapping("/{id}")

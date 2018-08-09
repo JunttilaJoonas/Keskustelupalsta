@@ -45,63 +45,16 @@ function addUser() {
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 201) {
-            var newId = xhr.responseText;
+            // var newId = xhr.responseText;
             console.log("Uusi käyttäjä luotu.");
-            // console.log()
-            deleteCookie("username");
-            deleteCookie("userid");
             setCookie("username", username.value, 1);
-            // getUserId(username.value);
-            setCookie("userid", parseInt(newId), 1);
+            // setCookie("userid", parseInt(newId), 1);
+            console.log("Nyt siirrytään");
             window.location.href = "http://localhost:8080/topics.html";
         }
     };
     xhr.send(json);
 }
-// function getUserId(username) {
-//
-// var inputUsername = document.getElementById("username").value;
-//
-// var xhr = new XMLHttpRequest();
-// xhr.onreadystatechange = function () {
-//     console.log(xhr.readyState);
-//     if (xhr.readyState === 4 && xhr.status === 200) {
-//             var result = JSON.parse(xhr.responseText);
-//
-//             console.log(result, inputUsername);
-//             return result.userid;
-//
-//         }
-//     };
-//     xhr.open('GET', "http://localhost:8080/users/user/" + username);
-//     xhr.send();
-// }
-
-
-// email.addEventListener("input", function (event) {
-//     // Each time the user types something, we check if the
-//     // email field is valid.
-//     if (email.validity.valid) {
-//         // In case there is an error message visible, if the field
-//         // is valid, we remove the error message.
-//         error.innerHTML = ""; // Reset the content of the message
-//         error.className = "error"; // Reset the visual state of the message
-//     }
-// }, false);
-//
-// form.addEventListener("submit", function (event) {
-//     // Each time the user tries to send the data, we check
-//     // if the email field is valid.
-//     if (!email.validity.valid) {
-//
-//         // If the field is not valid, we display a custom
-//         // error message.
-//         error.innerHTML = "Sähköpostiosoite on väärin.";
-//         error.className = "Virhe";
-//         // And we prevent the form from being sent by canceling the event
-//         event.preventDefault();
-//     }
-// }, false);
 
 
     

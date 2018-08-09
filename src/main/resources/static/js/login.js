@@ -47,14 +47,9 @@ function login() {
 function checkUser(user, inputUsername) {
     var inputPassword = document.getElementById("password").value;
     if (inputUsername == user.username && inputPassword==user.password) {
-        // console.log(loadUserFromCookies());
-        // if (getCookie("username").length>0) {
-        //     deleteCookie("username");
-        // }
-        deleteCookie("username");
         setCookie("username", inputUsername, 1);
         setCookie("userid", user.id, 1);
-        console.log(getCookie("username"));
+        console.log(getKeksi("username"));
         window.location.assign("http://localhost:8080/topics.html");
     } else {
         alert("Käyttäjätunnus tai salasana on virheellinen.")
@@ -69,13 +64,10 @@ function setCookie(keksinNimi, keksinArvo, voimassaolo) {
     // console.dir(x);
 }
 
-function getCookie(name) {
+function getKeksi(name) {
     var check = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
     var result = check.exec(document.cookie);
     return (result === null) ? null : result[1];
 }
 
-function deleteCookie(name) {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
 

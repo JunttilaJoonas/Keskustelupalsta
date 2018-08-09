@@ -4,12 +4,17 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
+function getUserId() {
+    var url;
+
+}
+
 function addNewTopic(event) {
     event.preventDefault();
     var topic = {};
     topic.head = document.getElementById("head").value;
     var username = getCookie("username");
-    console.log(username);
+    console.log("otsikon luoja: " + username);
     topic.userid = 1;
     var json = JSON.stringify(topic);
     console.log(json);

@@ -1,7 +1,22 @@
-function getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function getUserId() {
+    var url;
+
 }
 
 function addNewTopic(event) {
@@ -9,7 +24,7 @@ function addNewTopic(event) {
     var topic = {};
     topic.head = document.getElementById("head").value;
     var username = getCookie("username");
-    console.log(username);
+    console.log("otsikon luoja: " + username);
     topic.userid = 1;
     var json = JSON.stringify(topic);
     console.log(json);
@@ -23,7 +38,7 @@ function addNewTopic(event) {
             var taulu = xhr1.getResponseHeader("location").split("/");
             var index = taulu[taulu.length-1];
             console.log(index);
-            window.location.href="http://localhost:8080/topicmessages.html?id=" + index;
+            // window.location.href="http://localhost:8080/topicmessages.html?id=" + index;
         }
     };
     xhr1.send(json);

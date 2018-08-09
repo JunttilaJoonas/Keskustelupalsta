@@ -10,8 +10,7 @@ var xhr = new XMLHttpRequest();
 
 // var error;
 
-function addUser(event) {
-    event.preventDefault();
+function addUser() {
     var data = {};
     data.username = username.value;
     data.password = password.value;
@@ -19,22 +18,23 @@ function addUser(event) {
     data.firstname = firstname.value;
     data.lastname = lastname.value;
     var birthday = birthdate.value;
-    console.log(birthday);
     data.birthdate = new Date(birthday);
+    console.log(new Date(birthday));
     var json = JSON.stringify(data);
     console.log(json);
-
+    saveUserToCookies();
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 201) {
             console.log("Uusi käyttäjä luotu.");
-            window.location.href="http://localhost:8080/topics.html";
+            // window.location.href="http://localhost:8080/topics.html";
         }
     }
     xhr.send(json);
 }
+
 
 // email.addEventListener("input", function (event) {
 //     // Each time the user types something, we check if the

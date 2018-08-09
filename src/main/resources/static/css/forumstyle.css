@@ -5,7 +5,15 @@ fieldset {
     position: relative;
 }
 
-label, input, button {
+.hide {
+    display: none;
+}
+
+.welcome {
+    display: block;
+}
+
+label,button {
     width : 150px;
     margin: 0;
 

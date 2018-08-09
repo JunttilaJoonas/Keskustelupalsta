@@ -21,10 +21,10 @@ function getTopics(result) {
     var headRow = document.createElement("tr");
     var head1 = document.createElement("th");
     head1.appendChild(document.createTextNode("Viestiketju"));
-    var head3 = document.createElement("th");
-    head3.appendChild(document.createTextNode("Aloittaja"));
     var head2 = document.createElement("th");
-    head2.appendChild(document.createTextNode("Aika"));
+    head2.appendChild(document.createTextNode("Aloittaja"));
+    var head3 = document.createElement("th");
+    head3.appendChild(document.createTextNode("Aika"));
     var head4 = document.createElement("th");
     head4.appendChild(document.createTextNode("ID"));
     headRow.appendChild(head1);
@@ -43,7 +43,7 @@ function getTopics(result) {
         var topicHead = document.createElement("td");
         var head = topic.head;
         var link = document.createElement("a");
-        link.setAttribute("href", "http://localhost:8080/topicmessages.html?id=" + topic.id);
+        link.setAttribute("href", "http://localhost:8080/contopicmessages.html?id=" + topic.id);
         link.innerHTML = head;
         topicHead.appendChild(link);
         var topicUser = document.createElement("td");

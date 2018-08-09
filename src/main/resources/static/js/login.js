@@ -44,11 +44,12 @@ function login() {
     xhr.send();
 }
 
-function checkUser(result, inputUsername) {
+function checkUser(user, inputUsername) {
     var inputPassword = document.getElementById("password").value;
-    if (inputUsername == result.username && inputPassword==result.password) {
+    if (inputUsername == user.username && inputPassword==user.password) {
         // console.log(loadUserFromCookies());
         asetaKeksi("username", inputUsername, 1);
+        asetaKeksi("userid", user.id, 1);
         console.log(getKeksi("username"));
         window.location.assign("http://localhost:8080/topics.html");
     } else {

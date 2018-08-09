@@ -23,9 +23,8 @@ function addNewTopic(event) {
     event.preventDefault();
     var topic = {};
     topic.head = document.getElementById("head").value;
-    var username = getCookie("username");
-    console.log("otsikon luoja: " + username);
-    topic.userid = 1;
+    topic.userid = parseInt(getCookie("userid"));
+    console.log(topic);
     var json = JSON.stringify(topic);
     console.log(json);
 
@@ -38,7 +37,7 @@ function addNewTopic(event) {
             var taulu = xhr1.getResponseHeader("location").split("/");
             var index = taulu[taulu.length-1];
             console.log(index);
-            // window.location.href="http://localhost:8080/topicmessages.html?id=" + index;
+            window.location.href="http://localhost:8080/topicmessages.html?id=" + index;
         }
     };
     xhr1.send(json);

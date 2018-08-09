@@ -27,7 +27,7 @@ function loginAsLastUser() {
 }
 
 function login() {
-    var inputUsername = document.getElementById("user").value;
+    var inputUsername = document.getElementById("username").value;
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -40,6 +40,7 @@ function login() {
 
                 console.log(result, inputUsername);
                 checkUser(result, inputUsername);
+
             }
         }
     };
@@ -50,6 +51,7 @@ function login() {
 function checkUser(result, inputUsername) {
     var inputPassword = document.getElementById("pass").value;
     if (inputUsername == result.username && inputPassword==result.password) {
+        saveUserToCookies();
         window.location.assign("http://localhost:8080/topics.html");
     } else {
         alert("Käyttäjätunnus tai salasana on virheellinen.")

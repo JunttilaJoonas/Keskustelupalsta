@@ -29,8 +29,6 @@ public class TopicController {
         this.messageRepository = messageRepository;
     }
 
-
-
     @GetMapping("/{id}")
     public Topic getOne(@PathVariable(name="id") int id) {
         Optional<Topic> optionalTopic = topicRepository.findById(id);

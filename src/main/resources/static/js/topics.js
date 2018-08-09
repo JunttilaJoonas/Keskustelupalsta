@@ -15,7 +15,8 @@ function getTable() {
 
 function getTopics(result) {
     if(result.length > 0) {
-
+        console.log("heipä hei");
+        console.log("cookies: " + document.cookie);
         var list = document.getElementById("tulos");
         var table = document.createElement("table");
         var tBody = document.createElement("tbody");

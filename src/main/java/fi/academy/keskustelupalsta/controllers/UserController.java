@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,6 +30,11 @@ public class UserController {
     @GetMapping("/{id}")
     public User getOne(@PathVariable(name="id") int id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Käyttäjää ei löydy"));
+    }
+
+    @GetMapping("/user/{username}")
+    public User getByUsername(@PathVariable(name="username") String username) {
+        return userRepository.findByUsername(username);
     }
     
     @PostMapping

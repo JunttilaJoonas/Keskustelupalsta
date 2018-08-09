@@ -29,9 +29,9 @@ function addUser() {
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 201) {
             console.log("Uusi käyttäjä luotu.");
-            // window.location.href="http://localhost:8080/topics.html";
+            window.location.href="http://localhost:8080/topics.html";
         }
-    }
+    };
     xhr.send(json);
 }
 

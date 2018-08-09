@@ -43,7 +43,7 @@ function getTopics(result) {
         var topicHead = document.createElement("td");
         var head = topic.head;
         var link = document.createElement("a");
-        link.setAttribute("href", "http://localhost:8080/topicmessages.html?id=" + topic.id);
+        link.setAttribute("href", "http://localhost:8080/contopicmessages.html?id=" + topic.id);
         link.innerHTML = head;
         topicHead.appendChild(link);
         var topicTimestamp = document.createElement("td");

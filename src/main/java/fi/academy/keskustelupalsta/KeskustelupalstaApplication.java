@@ -27,48 +27,33 @@ public class KeskustelupalstaApplication {
     @Autowired
     public CommandLineRunner init(MessageRepository messageRepository, TopicRepository topicRepository, UserRepository userRepository) {
         return args -> {
-            User user = new User("Testikayttaja", "testi@kayttaja.fi", "salasana");
+            long time = System.currentTimeMillis() - 100000000;
+            User testi = new User("Testikayttaja", "testi@kayttaja.fi", "salasana");
             User joonas = new User("joonas", "joonas@forum.fi", "salasana");
-            userRepository.save(user);
+            User evilUser = new User("EvilUser_666", "eviluser666@hell.com", "salasana");
+            User tommi = new User("Tommi", "tommi@sovelto.fi", "salasana");
+            userRepository.save(testi);
             userRepository.save(joonas);
+            userRepository.save(evilUser);
+            userRepository.save(tommi);
 
             List<Topic> topics = new ArrayList<>();
-            topics.add(new Topic("otsikko", user));
-            topics.add(new Topic("otsikko2", user));
-            topics.add(new Topic("otsikko3", user));
-            topics.add(new Topic("otsikko4", user));
-            topics.add(new Topic("otsikko5", user));
-            topics.add(new Topic("otsikko6", user));
-            topics.add(new Topic("otsikko7", user));
+            Topic helppo = new Topic("Tämä on helppo", tommi);
+            Topic git = new Topic("Git on parasta",joonas);
+            Topic testiaihe = new Topic("Testing testing", testi);
+            Topic eviltopic = new Topic("11111111111111111111111111111111111111111111111111111111111111 11111111111111111111111111111111111111111111111111111111111111", evilUser);
+            topics.add(helppo);
+            topics.add(git);
+            topics.add(testiaihe);
+            topics.add(eviltopic);
 
-            for (int i = 0, j = 1000; i<topics.size(); i++) {
-                long aika = j*12345;
-                Topic topic = topics.get(i);
-                topic.setTimestamp(new Timestamp(aika));
+            for (Topic topic : topics) {
+                topic.setTimestamp(new Timestamp(time));
                 topicRepository.save(topic);
-                j += 1234;
+                time -= 1000000000;
             }
 
             List<Message> messages = new ArrayList<>();
-            messages.add(new Message("viestin sisältö", user, topics.get(0)));
-            messages.add(new Message("viestin sisältö", user, topics.get(0)));
-            messages.add(new Message("viestin sisältö", user, topics.get(0)));
-            messages.add(new Message("viestin sisältö", user, topics.get(1)));
-            messages.add(new Message("viestin sisältö", user, topics.get(1)));
-            messages.add(new Message("viestin sisältö", user, topics.get(1)));
-            messages.add(new Message("viestin sisältö", user, topics.get(2)));
-            messages.add(new Message("viestin sisältö", user, topics.get(2)));
-            messages.add(new Message("viestin sisältö", user, topics.get(2)));
-            messages.add(new Message("viestin sisältö", user, topics.get(3)));
-            messages.add(new Message("viestin sisältö", user, topics.get(3)));
-
-            for (int i = 0, j = 1000; i<messages.size(); i++) {
-                long aika = j*12345;
-                Message message = messages.get(i);
-                message.setTimestamp(new Timestamp(aika));
-                messageRepository.save(message);
-                j += 1234;
-            }
         };
     }
 }

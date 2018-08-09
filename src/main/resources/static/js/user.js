@@ -46,9 +46,11 @@ function addUser() {
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 201) {
             // var newId = xhr.responseText;
+            var taulu = xhr.getResponseHeader("location").split("/");
+            var index = taulu[taulu.length-1];
             console.log("Uusi käyttäjä luotu.");
             setCookie("username", username.value, 1);
-            // setCookie("userid", parseInt(newId), 1);
+            setCookie("userid", index, 1);
             console.log("Nyt siirrytään");
             window.location.href = "http://localhost:8080/topics.html";
         }

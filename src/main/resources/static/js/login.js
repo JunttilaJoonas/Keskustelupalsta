@@ -61,7 +61,6 @@ function setCookie(keksinNimi, keksinArvo, voimassaolo) {
     pvm.setTime(pvm.getTime() + (voimassaolo * 24 * 60 * 60 * 1000));
     var voimassaoloaika = "päättyy=" + pvm.toUTCString();
     var x = document.cookie = keksinNimi + "=" + keksinArvo + ";" + voimassaoloaika + ";path=/";
-    // console.dir(x);
 }
 
 function getKeksi(name) {

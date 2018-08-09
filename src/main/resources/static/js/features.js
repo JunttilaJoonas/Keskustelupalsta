@@ -1,7 +1,3 @@
-function login() {
-    window.location.assign("http://localhost:8080/topics.html");
-}
-
 function register() {
     console.log("Klikattu regs");
     window.location.assign("http://localhost:8080/registration.html");

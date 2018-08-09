@@ -31,6 +31,7 @@ function fetchMessages() {
 }
 
 function addMessagesToPage(messages, topicId) {
+
     var pageTitle = document.getElementById("topic-title");
     var table = document.getElementById("messagetable");
 
@@ -42,9 +43,23 @@ function addMessagesToPage(messages, topicId) {
     console.log(topicName);
     pageTitle.innerHTML = topicName;
 
+    var tHead = document.createElement("thead");
+    var headRow = document.createElement("tr");
+    var head1 = document.createElement("th");
+    head1.appendChild(document.createTextNode("Viesti"));
+    var head2 = document.createElement("th");
+    head2.appendChild(document.createTextNode("Kirjoittaja"));
+    var head3 = document.createElement("th");
+    head3.appendChild(document.createTextNode("Aika"));
+    headRow.appendChild(head1);
+    headRow.appendChild(head2);
+    headRow.appendChild(head3);
+    tHead.appendChild(headRow);
+    table.appendChild(tHead);
+
     for (var i = 0; i < messages.length; i++) {
         var user = messages[i].userid.username;
-        var timestamp = messages[i].timestamp;
+        var timestamp = new Date(messages[i].timestamp);
         var message = messages[i].text;
 
         var tablerow = document.createElement("tr");
@@ -53,7 +68,8 @@ function addMessagesToPage(messages, topicId) {
         var textField = document.createElement("td");
 
         userField.appendChild(document.createTextNode(user));
-        timeField.appendChild(document.createTextNode(timestamp));
+        var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+        timeField.appendChild(document.createTextNode(timestamp.toLocaleDateString('fi', options)));
         textField.appendChild(document.createTextNode(message));
 
         tablerow.appendChild(textField);
@@ -65,8 +81,10 @@ function addMessagesToPage(messages, topicId) {
 
 function postNewMessage() {
     var url = "http://localhost:8080/messages";
+    var textField = document.getElementById("new-message-text");
     var data = {};
-    data.text = document.getElementById("new-message-text").value;
+    data.text = textField.value;
+    textField.value = "";
     data.topicid = parseInt(getQueryVariable("id"));
     data.userid = 1;
     var json = JSON.stringify(data);
@@ -79,7 +97,7 @@ function postNewMessage() {
             console.log("Postattu");
             fetchMessages();
         }
-    }
+    };
 
     xhr.send(json);
 }

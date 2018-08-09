@@ -52,13 +52,11 @@ function getTopics(result) {
         var head = topic.head;
         var link = document.createElement("a");
         var url;
-
         if (location.includes("con")) {
             url = "http://localhost:8080/contopicmessages.html?id=";
         } else {
             url = "http://localhost:8080/topicmessages.html?id=";
         }
-
         link.setAttribute("href", url + topic.id);
         link.innerHTML = head;
         topicHead.appendChild(link);

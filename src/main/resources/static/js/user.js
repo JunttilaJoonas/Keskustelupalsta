@@ -31,7 +31,7 @@ function addUser() {
             console.log("Uusi käyttäjä luotu.");
             // window.location.href="http://localhost:8080/topics.html";
         }
-    }
+    };
     xhr.send(json);
 }
 

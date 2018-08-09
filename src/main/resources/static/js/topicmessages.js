@@ -25,7 +25,6 @@ function showTitleAndMessagesOnLoad() {
                 console.log(topicName);
                 var pageTitle = document.getElementById("topic-title");
                 pageTitle.innerHTML = topicName;
-
                 fetchMessages();
             }
         }

@@ -10,38 +10,54 @@ function getQueryVariable(variable) {
     return(false);
 }
 
+function showTitleAndMessagesOnLoad() {
+    var topicId = getQueryVariable("id");
+    var url = "http://localhost:8080/topics/" + topicId;
+    xhr.open('get', url);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log("otsikko haettu");
+                var topic = JSON.parse(xhr.responseText);
+                console.log("otsikko-olio: " + topic);
+                var topicName = topic.head;
+                console.log(topicName);
+                var pageTitle = document.getElementById("topic-title");
+                pageTitle.innerHTML = topicName;
+
+                fetchMessages();
+            }
+        }
+    };
+    xhr.send(null);
+}
+
 function fetchMessages() {
-    var id = getQueryVariable("id");
-    var url = "http://localhost:8080/messages/topic/" + id;
+    var topicId = getQueryVariable("id");
+    var url = "http://localhost:8080/messages/topic/" + topicId;
     console.log("rest-osoite: " + url);
 
+    xhr.open('get', url);
     xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var messages = JSON.parse(xhr.responseText);
                 console.dir(messages);
-                addMessagesToPage(messages, id);
+                addMessagesToPage(messages, topicId);
             }
         }
     };
-
-    xhr.open('get', url);
     xhr.send(null);
 }
 
 function addMessagesToPage(messages, topicId) {
 
-    var pageTitle = document.getElementById("topic-title");
     var table = document.getElementById("messagetable");
-
     while (table.firstChild) {
         table.removeChild(table.firstChild);
     }
-
-    var topicName = messages[0].topicid.head;
-    console.log(topicName);
-    pageTitle.innerHTML = topicName;
 
     var tHead = document.createElement("thead");
     var headRow = document.createElement("tr");

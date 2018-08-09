@@ -6,8 +6,8 @@ body {
 }
 
 p {
-    text-align: left;
-    margin-left: 50px;
+    text-align: center;
+    /*margin-left: 140px;*/
 }
 
 div #tulos table, #messagetable {
@@ -36,6 +36,20 @@ div #tulos table, #messagetable {
     text-align: left;
     background-color: cornflowerblue;
     color: white;
+}
+
+#tulos tr td:first-child, #messagetable tr td:first-child {
+    width: 60%;
+}
+
+#tulos tr td:nth-child(2), #messagetable tr td:nth-child(2) {
+    width: 30%;
+    font-size: smaller;
+}
+
+#tulos tr td:last-child, #messagetable tr td:last-child {
+    width: 10%;
+    font-size: smaller;
 }
 
 .content {

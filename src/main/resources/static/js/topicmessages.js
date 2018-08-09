@@ -78,6 +78,7 @@ function addMessagesToPage(messages, topicId) {
         table.appendChild(tHead);
 
         for (var i = 0; i < messages.length; i++) {
+            console.log(messages[i].userid);
             var user = messages[i].userid.username;
             var timestamp = new Date(messages[i].timestamp);
             var message = messages[i].text;

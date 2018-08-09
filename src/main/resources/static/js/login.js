@@ -48,26 +48,34 @@ function checkUser(user, inputUsername) {
     var inputPassword = document.getElementById("password").value;
     if (inputUsername == user.username && inputPassword==user.password) {
         // console.log(loadUserFromCookies());
-        asetaKeksi("username", inputUsername, 1);
-        asetaKeksi("userid", user.id, 1);
-        console.log(getKeksi("username"));
+        // if (getCookie("username").length>0) {
+        //     deleteCookie("username");
+        // }
+        deleteCookie("username");
+        setCookie("username", inputUsername, 1);
+        setCookie("userid", user.id, 1);
+        console.log(getCookie("username"));
         window.location.assign("http://localhost:8080/topics.html");
     } else {
         alert("Käyttäjätunnus tai salasana on virheellinen.")
     }
 }
 
-function asetaKeksi(keksinNimi, keksinArvo, voimassaolo) {
+function setCookie(keksinNimi, keksinArvo, voimassaolo) {
     var pvm = new Date();
-    pvm.setTime(pvm.getTime() + (voimassaolo * 24 * 60 * 60 * 1000));  // Millisekunnit päiviksi
+    pvm.setTime(pvm.getTime() + (voimassaolo * 24 * 60 * 60 * 1000));
     var voimassaoloaika = "päättyy=" + pvm.toUTCString();
     var x = document.cookie = keksinNimi + "=" + keksinArvo + ";" + voimassaoloaika + ";path=/";
     // console.dir(x);
 }
 
-function getKeksi(nimi) {
-    var tarkistus = new RegExp("(?:^" + nimi + "|;\s*" + nimi + ")=(.*?)(?:;|$)", "g"); // kaikki osumat. saa olla whitespacea jne.
-    var tulos = tarkistus.exec(document.cookie);
-    return (tulos === null) ? null : tulos[1];
+function getCookie(name) {
+    var check = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
+    var result = check.exec(document.cookie);
+    return (result === null) ? null : result[1];
+}
+
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 

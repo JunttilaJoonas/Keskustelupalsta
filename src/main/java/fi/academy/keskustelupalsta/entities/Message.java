@@ -9,6 +9,8 @@ public class Message {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private Timestamp timestamp;
+//    @Lob
+    @Column(columnDefinition = "TEXT")
     private String text;
     @ManyToOne @JoinColumn
     private User userid;

@@ -28,12 +28,9 @@ function getTopics(result) {
         head2.appendChild(document.createTextNode("Aloittaja"));
         var head3 = document.createElement("th");
         head3.appendChild(document.createTextNode("Aika"));
-        var head4 = document.createElement("th");
-        head4.appendChild(document.createTextNode("ID"));
         headRow.appendChild(head1);
         headRow.appendChild(head2);
         headRow.appendChild(head3);
-        headRow.appendChild(head4);
         tHead.appendChild(headRow);
         table.appendChild(tHead);
     }
@@ -68,12 +65,9 @@ function getTopics(result) {
         var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
         topicTimestamp.appendChild(document.createTextNode(dateToTable.toLocaleDateString('fi', options)));
         var topicId = document.createElement("td");
-        topicId.appendChild(document.createTextNode(topic.id));
-
         topicRow.appendChild(topicHead);
         topicRow.appendChild(topicUser);
         topicRow.appendChild(topicTimestamp);
-        topicRow.appendChild(topicId);
 
         tBody.appendChild(topicRow);
     }

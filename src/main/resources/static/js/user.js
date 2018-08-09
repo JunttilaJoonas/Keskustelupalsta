@@ -1,16 +1,14 @@
-var username = document.getElementById("username");
-var password = document.getElementById("password");
-var email = document.getElementById("email");
-var firstname = document.getElementById("firstname");
-var lastname = document.getElementById("lastname");
-var birthdate = document.getElementById("birthdate");
 var form = document.getElementById("submit");
-var url = "http://localhost:8080/users";
-var xhr = new XMLHttpRequest();
 
 // var error;
 
 function addUser() {
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var email = document.getElementById("email");
+    var firstname = document.getElementById("firstname");
+    var lastname = document.getElementById("lastname");
+    var birthdate = document.getElementById("birthdate");
     var data = {};
     data.username = username.value;
     data.password = password.value;
@@ -23,6 +21,9 @@ function addUser() {
     var json = JSON.stringify(data);
     console.log(json);
     saveUserToCookies();
+
+    var url = "http://localhost:8080/users";
+    var xhr = new XMLHttpRequest();
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');

@@ -27,7 +27,7 @@ function loginAsLastUser() {
 }
 
 function login() {
-    var inputUsername = document.getElementById("user").value;
+    var inputUsername = document.getElementById("username").value;
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -48,7 +48,7 @@ function login() {
 }
 
 function checkUser(result, inputUsername) {
-    var inputPassword = document.getElementById("pass").value;
+    var inputPassword = document.getElementById("password").value;
     if (inputUsername == result.username && inputPassword==result.password) {
         window.location.assign("http://localhost:8080/topics.html");
     } else {

@@ -36,7 +36,7 @@ public class UserController {
     public User getByUsername(@PathVariable(name="username") String username) {
         return userRepository.findByUsername(username);
     }
-    
+
     @PostMapping
     public ResponseEntity<?> addOne(@RequestBody User user){
         userRepository.save(user);
@@ -48,7 +48,7 @@ public class UserController {
                 .path("/users/{id}")
                 .buildAndExpand(id)
                 .toUri();
-        return ResponseEntity<?>
+        return ResponseEntity.created(location).build();
     }
     
     @PutMapping("/{id}")

@@ -1,10 +1,16 @@
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
 function addNewTopic(event) {
     event.preventDefault();
     var topic = {};
     topic.head = document.getElementById("head").value;
-    topic.userid = {
-        "id": 1
-    };
+    var username = getCookie("username");
+    console.log(username);
+    topic.userid = 1;
     var json = JSON.stringify(topic);
     console.log(json);
 

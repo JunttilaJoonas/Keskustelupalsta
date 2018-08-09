@@ -1,8 +1,27 @@
-fieldset {
-    width: 90%;
+body {
     max-width: 600px;
     margin: auto;
+    text-align: center;
+    font-family: Arial;
+}
+
+.content {
+    max-width: 600px;
+    margin: 20px;
+}
+
+fieldset {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    border-radius: 8px;
     position: relative;
+}
+
+table {
+    align-content: center;
+    text-align: left;
 }
 
 .hide {
@@ -13,47 +32,50 @@ fieldset {
     display: block;
 }
 
-label,button {
-    width : 150px;
+label {
+    width : 50px;
     margin: 0;
+    font-size: smaller;
 
     -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
     -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
     box-sizing: border-box;
 }
 
-input[type="email"]{
-    -webkit-appearance: none;
-
-    border: 1px solid #333;
-    font-family: inherit;
-    font-size: 90%;
+input {
+    width: 250px;
+    margin-left: 5px;
+    border-radius: 8px;
 }
 
-/* This is our style for the invalid fields */
-input:invalid{
-    border-color: #900;
-    background-color: #FDD;
+input.placeholder {
+    text-align: left;
+    margin-left: 5px;
 }
 
-input:focus:invalid {
-    outline: none;
+/*input[type="email"]{*/
+    /*-webkit-appearance: none;*/
+
+    /*border: 1px solid #333;*/
+    /*font-family: inherit;*/
+    /*font-size: 90%;*/
+/*}*/
+
+footer {
+    margin-top: 8px;
+    font-size: small;
+    font-weight: bolder;
+    text-align: center;
+    font-family: Arial;
 }
 
-/* This is the style of our error messages */
-.error {
-    width  : 100%;
-    padding: 0;
-
-    font-size: 80%;
-    color: white;
-    background-color: #900;
-    border-radius: 0 0 5px 5px;
-
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.error.active {
-    padding: 0.3em;
+.loginbutton {
+    margin-right: 2px;
+    border-radius: 8px;
+    width: 130px;
+    height: 22px;
+    color: black;
+    font-size: x-small;
+    font-weight: bolder;
+    align-content: center
 }

@@ -45,7 +45,7 @@ function login() {
 }
 
 function checkUser(result, inputUsername) {
-    var inputPassword = document.getElementById("pass").value;
+    var inputPassword = document.getElementById("password").value;
     if (inputUsername == result.username && inputPassword==result.password) {
         saveUserToCookies();
         window.location.assign("http://localhost:8080/topics.html");

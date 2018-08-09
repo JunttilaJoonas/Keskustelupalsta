@@ -10,7 +10,6 @@ function checkIfUsernameExists() {
             if (xhr1.responseText.length>0) {
                 alert("Käyttäjätunnus on jo olemassa");
             } else {
-
                 addUser();
             }
         }
@@ -20,16 +19,12 @@ function checkIfUsernameExists() {
 }
 
 function addUser() {
-    console.log("hei1");
     var username = document.getElementById("username");
     var password = document.getElementById("password");
     var email = document.getElementById("email");
     var firstname = document.getElementById("firstname");
     var lastname = document.getElementById("lastname");
     var birthdate = document.getElementById("birthdate");
-    var form = document.getElementById("submit");
-    var url = "http://localhost:8080/users";
-
     var data = {};
     data.username = username.value;
     data.password = password.value;
@@ -43,6 +38,7 @@ function addUser() {
     console.log(json);
     saveUserToCookies();
 
+    var url = "http://localhost:8080/users";
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');

@@ -1,8 +1,20 @@
 body {
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     text-align: center;
     font-family: Arial;
+}
+
+p {
+    text-align: left;
+}
+
+#tulos.table {
+    table-layout: fixed;
+    width: 90%;
+    position: relative;
+    align-content: center;
+    text-align: left;
 }
 
 .content {
@@ -12,7 +24,7 @@ body {
 
 fieldset {
     width: 90%;
-    max-width: 500px;
+    max-width: 450px;
     margin: auto;
     text-align: center;
     border-radius: 8px;

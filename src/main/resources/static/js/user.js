@@ -18,7 +18,9 @@ function addUser(event) {
     data.email = email.value;
     data.firstname = firstname.value;
     data.lastname = lastname.value;
-    data.birthdate = birthdate.value;
+    var birthday = birthdate.value;
+    console.log(birthday);
+    data.birthdate = new Date(birthday);
     var json = JSON.stringify(data);
     console.log(json);
 

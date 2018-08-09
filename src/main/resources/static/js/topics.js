@@ -21,10 +21,10 @@ function getTopics(result) {
     var headRow = document.createElement("tr");
     var head1 = document.createElement("th");
     head1.appendChild(document.createTextNode("Viestiketju"));
-    var head2 = document.createElement("th");
-    head2.appendChild(document.createTextNode("Aika"));
     var head3 = document.createElement("th");
     head3.appendChild(document.createTextNode("Aloittaja"));
+    var head2 = document.createElement("th");
+    head2.appendChild(document.createTextNode("Aika"));
     var head4 = document.createElement("th");
     head4.appendChild(document.createTextNode("ID"));
     headRow.appendChild(head1);
@@ -33,12 +33,12 @@ function getTopics(result) {
     headRow.appendChild(head4);
     tHead.appendChild(headRow);
     table.appendChild(tHead);
-    // table.appendChild(tBody);
 
     for (var i = 0; i < result.length; i++) {
         var topic = result[i];
         var userid = topic.userid;
         var username = userid.username;
+
         var topicRow = document.createElement("tr");
         var topicHead = document.createElement("td");
         var head = topic.head;
@@ -46,13 +46,21 @@ function getTopics(result) {
         link.setAttribute("href", "http://localhost:8080/topicmessages.html?id=" + topic.id);
         link.innerHTML = head;
         topicHead.appendChild(link);
-        var topicTimestamp = document.createElement("td");
-        topicTimestamp.appendChild(document.createTextNode(topic.timestamp));
         var topicUser = document.createElement("td");
         topicUser.appendChild(document.createTextNode(username));
+        console.log(topic.timestamp);
+        var dateToTable = new Date(topic.timestamp);
+        var topicTimestamp = document.createElement("td");
+        var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+        topicTimestamp.appendChild(document.createTextNode(dateToTable.toLocaleDateString('fi', options)));
+        var topicId = document.createElement("td");
+        topicId.appendChild(document.createTextNode(topic.id));
+
         topicRow.appendChild(topicHead);
-        topicRow.appendChild(topicTimestamp);
         topicRow.appendChild(topicUser);
+        topicRow.appendChild(topicTimestamp);
+        topicRow.appendChild(topicId);
+
         tBody.appendChild(topicRow);
     }
     console.log(tBody);

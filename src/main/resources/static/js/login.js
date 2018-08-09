@@ -47,10 +47,26 @@ function login() {
 function checkUser(result, inputUsername) {
     var inputPassword = document.getElementById("password").value;
     if (inputUsername == result.username && inputPassword==result.password) {
-        saveUserToCookies();
+        // console.log(loadUserFromCookies());
+        asetaKeksi("username", inputUsername, 1);
+        console.log(getKeksi("username"));
         window.location.assign("http://localhost:8080/topics.html");
     } else {
         alert("Käyttäjätunnus tai salasana on virheellinen.")
     }
+}
+
+function asetaKeksi(keksinNimi, keksinArvo, voimassaolo) {
+    var pvm = new Date();
+    pvm.setTime(pvm.getTime() + (voimassaolo * 24 * 60 * 60 * 1000));  // Millisekunnit päiviksi
+    var voimassaoloaika = "päättyy=" + pvm.toUTCString();
+    var x = document.cookie = keksinNimi + "=" + keksinArvo + ";" + voimassaoloaika + ";path=/";
+    // console.dir(x);
+}
+
+function getKeksi(nimi) {
+    var tarkistus = new RegExp("(?:^" + nimi + "|;\s*" + nimi + ")=(.*?)(?:;|$)", "g"); // kaikki osumat. saa olla whitespacea jne.
+    var tulos = tarkistus.exec(document.cookie);
+    return (tulos === null) ? null : tulos[1];
 }
 

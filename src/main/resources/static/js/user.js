@@ -1,6 +1,22 @@
-var form = document.getElementById("submit");
-
-// var error;
+function checkIfUsernameExists() {
+    var username1 = document.getElementById("username").value;
+    console.log("höö");
+    console.log(username1);
+    var xhr1 = new XMLHttpRequest();
+    xhr1.onreadystatechange = function () {
+        console.log("pööö");
+        if (xhr1.readyState === 4 && xhr1.status === 200) {
+            console.log(xhr1.responseText.length);
+            if (xhr1.responseText.length>0) {
+                alert("Käyttäjätunnus on jo olemassa");
+            } else {
+                addUser();
+            }
+        }
+    };
+    xhr1.open('GET', "http://localhost:8080/users/user/" + username1);
+    xhr1.send();
+}
 
 function addUser() {
     var username = document.getElementById("username");
@@ -22,15 +38,15 @@ function addUser() {
     console.log(json);
     saveUserToCookies();
 
+
     var url = "http://localhost:8080/users";
     var xhr = new XMLHttpRequest();
-
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 201) {
             console.log("Uusi käyttäjä luotu.");
-            window.location.href="http://localhost:8080/topics.html";
+            window.location.href = "http://localhost:8080/topics.html";
         }
     };
     xhr.send(json);

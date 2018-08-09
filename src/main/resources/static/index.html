@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/forumstyle.css">
     <script src="js/features.js"></script>
 </head>
 <body>
+<div class="content">
 <h1>Tervetuloa keskustelufoorumiimme</h1>
-<h3>Rekisteröitymällä pääset osallistumaan keskusteluun. Voit avata uusia aiheita
-    tai vastata olemassa oleviin viestiketjuihin.</h3>
+<p>Kirjautumalla pääset osallistumaan keskusteluun:<br>
+    voit avata uusia aiheita tai vastata olemassa oleviin viestiketjuihin.<br>
+    Valitse "Jatka kirjautumatta" päästäksesi vain lukemaan viestiketjuja.
+</p>
 <div>
     <input type="text" id="user" placeholder="Käyttäjätunnus">
     <input type="password" id="pass" placeholder="Salasana">
+    <br><br>
     <input type="button" id="login" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
     <input type="button" id="register" class="loginbutton" onclick="register()" value="Rekisteröidy">
     <input type="button" id="continue" class="loginbutton" onclick="continueWithoutRegistering()" value="Jatka kirjautumatta">
 </div>
-
+</div>
 <footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>
 </html>

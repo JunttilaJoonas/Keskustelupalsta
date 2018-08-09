@@ -30,20 +30,22 @@ public class KeskustelupalstaApplication {
             long time = System.currentTimeMillis() - 100000000;
             User testi = new User("Testikayttaja", "testi@kayttaja.fi", "salasana");
             User joonas = new User("joonas", "joonas@forum.fi", "salasana");
-            User evil = new User("EvilUser_666", "eviluser666@hell.com", "salasana");
+            User evilUser = new User("EvilUser_666", "eviluser666@hell.com", "salasana");
             User tommi = new User("Tommi", "tommi@sovelto.fi", "salasana");
             userRepository.save(testi);
             userRepository.save(joonas);
-            userRepository.save(evil);
+            userRepository.save(evilUser);
             userRepository.save(tommi);
 
             List<Topic> topics = new ArrayList<>();
             Topic helppo = new Topic("Tämä on helppo", tommi);
             Topic git = new Topic("Git on parasta",joonas);
             Topic testiaihe = new Topic("Testing testing", testi);
+            Topic eviltopic = new Topic("11111111111111111111111111111111111111111111111111111111111111 11111111111111111111111111111111111111111111111111111111111111", evilUser);
             topics.add(helppo);
             topics.add(git);
             topics.add(testiaihe);
+            topics.add(eviltopic);
 
             for (Topic topic : topics) {
                 topic.setTimestamp(new Timestamp(time));

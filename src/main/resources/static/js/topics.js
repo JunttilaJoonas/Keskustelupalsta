@@ -35,7 +35,6 @@ function getTopics(result) {
         headRow.appendChild(head4);
         tHead.appendChild(headRow);
         table.appendChild(tHead);
-
     }
 
 

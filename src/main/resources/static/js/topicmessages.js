@@ -59,39 +59,42 @@ function addMessagesToPage(messages, topicId) {
         table.removeChild(table.firstChild);
     }
 
-    var tHead = document.createElement("thead");
-    var headRow = document.createElement("tr");
-    var head1 = document.createElement("th");
-    head1.appendChild(document.createTextNode("Viesti"));
-    var head2 = document.createElement("th");
-    head2.appendChild(document.createTextNode("Kirjoittaja"));
-    var head3 = document.createElement("th");
-    head3.appendChild(document.createTextNode("Aika"));
-    headRow.appendChild(head1);
-    headRow.appendChild(head2);
-    headRow.appendChild(head3);
-    tHead.appendChild(headRow);
-    table.appendChild(tHead);
+    if (messages.length > 0) {
 
-    for (var i = 0; i < messages.length; i++) {
-        var user = messages[i].userid.username;
-        var timestamp = new Date(messages[i].timestamp);
-        var message = messages[i].text;
+        var tHead = document.createElement("thead");
+        var headRow = document.createElement("tr");
+        var head1 = document.createElement("th");
+        head1.appendChild(document.createTextNode("Viesti"));
+        var head2 = document.createElement("th");
+        head2.appendChild(document.createTextNode("Kirjoittaja"));
+        var head3 = document.createElement("th");
+        head3.appendChild(document.createTextNode("Aika"));
+        headRow.appendChild(head1);
+        headRow.appendChild(head2);
+        headRow.appendChild(head3);
+        tHead.appendChild(headRow);
+        table.appendChild(tHead);
 
-        var tablerow = document.createElement("tr");
-        var userField = document.createElement("td");
-        var timeField = document.createElement("td");
-        var textField = document.createElement("td");
+        for (var i = 0; i < messages.length; i++) {
+            var user = messages[i].userid.username;
+            var timestamp = new Date(messages[i].timestamp);
+            var message = messages[i].text;
 
-        userField.appendChild(document.createTextNode(user));
-        var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
-        timeField.appendChild(document.createTextNode(timestamp.toLocaleDateString('fi', options)));
-        textField.appendChild(document.createTextNode(message));
+            var tablerow = document.createElement("tr");
+            var userField = document.createElement("td");
+            var timeField = document.createElement("td");
+            var textField = document.createElement("td");
 
-        tablerow.appendChild(textField);
-        tablerow.appendChild(userField);
-        tablerow.appendChild(timeField);
-        table.appendChild(tablerow);
+            userField.appendChild(document.createTextNode(user));
+            var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+            timeField.appendChild(document.createTextNode(timestamp.toLocaleDateString('fi', options)));
+            textField.appendChild(document.createTextNode(message));
+
+            tablerow.appendChild(textField);
+            tablerow.appendChild(userField);
+            tablerow.appendChild(timeField);
+            table.appendChild(tablerow);
+        }
     }
 }
 

@@ -11,6 +11,7 @@ function getQueryVariable(variable) {
 }
 
 function showTitleAndMessagesOnLoad() {
+
     var topicId = getQueryVariable("id");
     var url = "http://localhost:8080/topics/" + topicId;
     xhr.open('get', url);
@@ -36,6 +37,8 @@ function fetchMessages() {
     var topicId = getQueryVariable("id");
     var url = "http://localhost:8080/messages/topic/" + topicId;
     console.log("rest-osoite: " + url);
+    console.log("cookiet alla -> ");
+    console.log(document.cookie);
 
     xhr.open('get', url);
     xhr.onreadystatechange = function () {
@@ -104,7 +107,7 @@ function postNewMessage() {
     data.text = textField.value;
     textField.value = "";
     data.topicid = parseInt(getQueryVariable("id"));
-    data.userid = 1;
+    data.userid = parseInt(getCookie("userid"));
     var json = JSON.stringify(data);
     console.log(json);
 
@@ -118,4 +121,20 @@ function postNewMessage() {
     };
 
     xhr.send(json);
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

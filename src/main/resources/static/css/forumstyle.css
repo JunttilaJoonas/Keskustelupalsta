@@ -7,27 +7,30 @@ body {
 
 p {
     text-align: left;
+    margin-left: 50px;
 }
 
-div #tulos table{
+div #tulos table, #messagetable {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
 
-#tulos td, #tulos th {
+#tulos td, #tulos th, #messagetable td, #messagetable th {
     border: 1px solid #ddd;
     padding: 5px;
 }
 
-#tulos tr:nth-child(odd) {
+#tulos tr:nth-child(odd), #messagetable tr:nth-child(odd) {
     background-color: #ddd;
     padding: 5px;
 }
 
-#tulos tr:hover {background-color: darkgrey;}
+#tulos tr:hover {
+    background-color: darkgrey;
+}
 
-#tulos th {
+#tulos th, #messagetable th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -85,6 +88,12 @@ input {
 input.placeholder {
     text-align: left;
     margin-left: 5px;
+}
+
+textarea {
+    width: 450px;
+    margin-left: 5px;
+    border-radius: 8px;
 }
 
 /*input[type="email"]{*/

@@ -6,15 +6,16 @@
     <script src="js/topicmessages.js"></script>
     <link rel="stylesheet" href="css/forumstyle.css">
 </head>
-<body onload="showTitleAndMessagesOnLoad()  ">
+<body onload="showTitleAndMessagesOnLoad()">
+<div class="content">
 <h1 id="topic-title">Viestiketjun otsikko</h1>
-<table id="messagetable">
-</table>
+<table id="messagetable"></table><br><br>
 <div>
-    <input type="text" id="new-message-text">
-    <input type="button" value="Lähetä viesti" onclick="postNewMessage()">
-</div>
+    <textarea id="new-message-text" rows="10" cols="200"></textarea><br>
+    <input type="button" class="loginbutton" value="Lähetä viesti" onclick="postNewMessage()">
+</div><br>
 <a href="topics.html">Takaisin viestiketjuihin</a>
+</div>
 <footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>
 </html>

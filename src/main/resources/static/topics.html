@@ -11,15 +11,17 @@
 </head>
 <body onload="getTable(),loadUserFromCookies(), showWelcome(), showHidden()">
 <div class="content">
-<h1>Keskustelut</h1>
-<div id="tulos"></div><br/><br/>
-<div id="newtopic" class="hide">
-    <form onsubmit="addNewTopic(event)">
-        Luo uusi keskustelu: <br/>
-        <input id="head" type="text" placeholder="Keskustelun otsikko" required><br/>
-        <input class="loginbutton" type="submit" value="Lähetä">
-    </form>
-</div>
+    <h1>Keskustelut</h1>
+    <h3 id="h3"></h3>
+    <div id="tulos"></div>
+    <br/><br/>
+    <div id="newtopic" class="hide">
+        <form onsubmit="addNewTopic(event)">
+            Luo uusi keskustelu: <br/>
+            <input id="head" type="text" placeholder="Keskustelun otsikko" required><br/>
+            <input class="loginbutton" type="submit" value="Lähetä">
+        </form>
+    </div>
 </div>
 <footer>© Annina Heiskanen, Joonas Junttila, Reija Jokinen 2018</footer>
 </body>

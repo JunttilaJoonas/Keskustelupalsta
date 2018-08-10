@@ -14,5 +14,5 @@ function showWelcome() {
 
 function welcomeText() {
     var h3text = document.getElementById("h3");
-    h3text.textContent += "Tervetuloa " + getKeksi("username") + "!";
+    h3text.textContent += "Tervetuloa " + getCookieUsername("username") + "!";
 }

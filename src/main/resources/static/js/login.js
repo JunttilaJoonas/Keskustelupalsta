@@ -29,7 +29,7 @@ function checkUser(user, inputUsername) {
     if (inputUsername == user.username && inputPassword==user.password) {
         setCookie("username", inputUsername, 1);
         setCookie("userid", user.id, 1);
-        console.log(getKeksi("username"));
+        console.log(getCookieUsername("username"));
         window.location.assign("http://localhost:8080/topics.html");
     } else {
         alert("Käyttäjätunnus tai salasana on virheellinen.")
@@ -43,7 +43,7 @@ function setCookie(name, value, expire) {
     var x = document.cookie = name + "=" + value + ";" + expiration + ";path=/";
 }
 
-function getKeksi(name) {
+function getCookieUsername(name) {
     var check = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
     var result = check.exec(document.cookie);
     return (result === null) ? null : result[1];

@@ -14,11 +14,6 @@ function getCookie(cname) {
     return "";
 }
 
-function getUserId() {
-    var url;
-
-}
-
 function addNewTopic(event) {
     event.preventDefault();
     var topic = {};

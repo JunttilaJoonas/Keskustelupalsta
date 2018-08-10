@@ -5,9 +5,8 @@ body {
     font-family: Arial;
 }
 
-p {
+h1, p {
     text-align: center;
-    /*margin-left: 140px;*/
 }
 
 div #tulos table, #messagetable {

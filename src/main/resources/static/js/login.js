@@ -1,26 +1,6 @@
-var cookies = {};
 var user;
 cookies = document.cookie;
 console.log(cookies);
-
-function saveUserToCookies() {
-    var username = document.getElementById("username").value;
-    console.log(document.getElementById("username").value);
-    var expires = new Date(Date.now()+24*60*60*1000).toString();
-    console.log("Expiring date added");
-    document.cookie = "username=" + username;
-    console.log("Cookies saved");
-    console.log("cookies: " + document.cookie);
-}
-
-function loadUserFromCookies() {
-    var lastUser = cookies["_lastUser"];
-    return lastUser;
-}
-
-function loginAsLastUser() {
-    var lastUser = loadUserFromCookies();
-}
 
 function login() {
     var inputUsername = document.getElementById("username").value;
@@ -56,11 +36,11 @@ function checkUser(user, inputUsername) {
     }
 }
 
-function setCookie(keksinNimi, keksinArvo, voimassaolo) {
-    var pvm = new Date();
-    pvm.setTime(pvm.getTime() + (voimassaolo * 24 * 60 * 60 * 1000));
-    var voimassaoloaika = "päättyy=" + pvm.toUTCString();
-    var x = document.cookie = keksinNimi + "=" + keksinArvo + ";" + voimassaoloaika + ";path=/";
+function setCookie(name, value, expire) {
+    var date = new Date();
+    date.setTime(date.getTime() + (expire * 24 * 60 * 60 * 1000));
+    var expiration = "päättyy=" + date.toUTCString();
+    var x = document.cookie = name + "=" + value + ";" + expiration + ";path=/";
 }
 
 function getKeksi(name) {
